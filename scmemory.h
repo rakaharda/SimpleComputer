@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <fstream>
+
 #define MEMSIZE 100
 #define FLAG_REG_SIZE 5
 #define MEMORY_OVERFLOW 1
@@ -11,8 +13,6 @@
 #define CLOCK_ERROR 4
 #define UNKNOWN_COMMAND 5
 #define COMMAND_LENGTH 15
-int sc_memory[MEMSIZE];
-char sc_flag_reg;
 
 int sc_memoryInit();
 int sc_memorySet(int address, int value);
