@@ -1,4 +1,4 @@
-#include "scmemory.h"
+ #include "scmemory.h"
 
 int sc_memory[MEMSIZE];
 char sc_flag_reg;

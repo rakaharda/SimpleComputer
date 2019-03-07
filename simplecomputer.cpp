@@ -24,9 +24,9 @@ int main()
     sc_memorySet(2, 8);
     sc_memorySet(99, 16);
     sc_printMemory();
-    sc_memorySave("dimanloh");
+    sc_memorySave("memorydump");
     sc_memoryInit();
-    sc_memoryLoad("dimanloh");
+    sc_memoryLoad("memorydump");
     sc_printMemory();
     return 0;
 }
