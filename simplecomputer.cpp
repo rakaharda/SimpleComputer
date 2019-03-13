@@ -1,32 +1,13 @@
 #include "scmemory.h"
-#include <malloc.h>
-#include <iostream>
-
-using namespace std;
-
-void sc_printMemory()
-{
-	int *temp = new int;
-    for(int i = 0; i < MEMSIZE; i++)
-		{
-			sc_memoryGet(i, temp);
-			cout << *temp << " ";
-		}
-		cout << endl;
-	delete(temp);
-}
+#include "scterminal.h"
 
 int main()
 {
-    sc_memoryInit();
-    sc_memorySet(0, 8);
-    sc_memorySet(1, 8);
-    sc_memorySet(2, 8);
-    sc_memorySet(99, 16);
-    sc_printMemory();
-    sc_memorySave("memorydump");
-    sc_memoryInit();
-    sc_memoryLoad("memorydump");
-    sc_printMemory();
+    mt_clrscr();
+    mt_setBgColor(Color::BLACK);
+    mt_setFgColor(Color::DEFAULT);
+    unsigned long long x;
+    x = x | 0xFFFFFFFFFFFFFFFFFFFFFFFF;
+    printf("%lli", x);
     return 0;
 }
