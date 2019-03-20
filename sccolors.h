@@ -6,7 +6,7 @@ enum Color
     BLACK = 40,
     RED,
     GREEN,
-    BROWN,
+    YELLOW,
     BLUE,
     MAGENTA,
     CYAN,

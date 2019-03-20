@@ -12,11 +12,11 @@
 #define HBORDER  "x"
 
 int bc_printA(char *str);
-int bc_box(int x1, int y1, int x2, int y2);
-int bc_printBigChar(int *big, int x, int y, Color fgColor, Color bgColor);
-int bc_setBigCharPos(int *big, int x, int y, int value);
-int bc_getBigCharPos(int *big, int x, int y, int *value);
-int bc_bigCharWrite(int fd, int *big, int count);
-int bc_bigCharRead(int fd, int *big, int needCount, int *count);
+int bc_box(unsigned x1, unsigned y1, unsigned x2, unsigned y2);
+int bc_printBigChar(long long big, unsigned x, unsigned y, Color fgColor, Color bgColor);
+int bc_setBigCharPos(long long *big, unsigned x, unsigned y, bool value);
+int bc_getBigCharPos(long long *big, unsigned x, unsigned y, bool *value);
+int bc_bigCharWrite(int fd, long long *big, int count);
+int bc_bigCharRead(int fd, long long *big, int needCount, int *count);
 
 #endif 
