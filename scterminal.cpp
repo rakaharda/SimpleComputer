@@ -6,7 +6,7 @@ int mt_clrscr ()
     return 1;
 }
 
-int mt_gotoXY(int row, int column)
+int mt_gotoXY(int column, int row)
 {
     printf("\E[%d;%dH", row, column);
     return 1;

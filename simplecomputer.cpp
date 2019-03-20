@@ -8,9 +8,9 @@ int main()
 {
     mt_clrscr();
     bc_box(3, 3, 12, 12);
-    long long a = 0;
-    //bc_setBigCharPos(&a, 1, 1, true);
-    bc_setBigCharPos(&a, 0, 2, true);
+    long a = 0;
+    bc_setBigCharPos(&a, 1, 1, true);
+    bc_setBigCharPos(&a, 8, 8, true);
     bc_printBigChar(a, 4, 4, Color::GREEN, Color::DEFAULT);
     return 0;
 }
