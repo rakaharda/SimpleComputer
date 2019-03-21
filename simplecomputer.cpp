@@ -1,17 +1,23 @@
 #include "scmemory.h"
 #include "scterminal.h"
 #include "scbigChars.h"
+#include <bitset>
+#include <iostream>
+
+using namespace std;
 
 void printExtendedCharset();
 
 int main()
 {
     mt_clrscr();
-    bc_box(3, 3, 12, 12);
-    long a = 0;
-    bc_setBigCharPos(&a, 1, 1, true);
-    bc_setBigCharPos(&a, 8, 8, true);
-    bc_printBigChar(a, 4, 4, Color::GREEN, Color::DEFAULT);
+    int command;
+    int operand;
+    int value;
+    commandEncode(10, 11, &value);
+    cout << value;
+    commandDecode(value, &command, &operand);
+    cout << endl << command << " " << operand;
     return 0;
 }
 

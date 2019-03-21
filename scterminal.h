@@ -6,6 +6,7 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 #include "sccolors.h"
+#include <bitset>
 
 int mt_clrscr ();
 int mt_gotoXY(int row, int column);

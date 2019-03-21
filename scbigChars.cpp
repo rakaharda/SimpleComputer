@@ -2,7 +2,7 @@
 
 int bc_printA(string str)
 {
-    printf("\E(0%s\E(B", str);
+    printf("\E(0%s\E(B", str.c_str());
     return 1;
 }
 
