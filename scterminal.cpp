@@ -1,18 +1,20 @@
 #include "scterminal.h"
 
-int mt_clrscr ()
+using namespace std;
+
+int clearScreen ()
 {
-    printf("\E[H\E[2J");
+    cout << "\E[H\E[2J";
     return 1;
 }
 
-int mt_gotoXY(int column, int row)
+int gotoXY(int column, int row)
 {
-    printf("\E[%d;%dH", row, column);
+    cout << "\E[" << row << ';' << column << 'H';
     return 1;
 }
 
-int mt_getScreenSize(int *rows, int *columns)
+int getScreenSize(int *rows, int *columns)
 {
     struct winsize ws;
     if (!ioctl(1, TIOCGWINSZ, &ws))
@@ -27,14 +29,14 @@ int mt_getScreenSize(int *rows, int *columns)
     return 1;
 }
 
-int mt_setFgColor(Color color)
+int setFgColor(Color color)
 {
-    printf("\E[%dm", ((int)color)- 10);
+    cout << "\E[" << (int)color - 10 <<'m';
     return 1;
 }
 
-int mt_setBgColor(Color color)
+int setBgColor(Color color)
 {
-    printf("\E[%dm", (int)color);
+    cout << "\E[" << (int)color << 'm';
     return 1;
 }

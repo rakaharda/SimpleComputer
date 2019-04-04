@@ -7,11 +7,12 @@
 #include <sys/ioctl.h>
 #include "sccolors.h"
 #include <bitset>
+#include <iostream>
 
-int mt_clrscr ();
-int mt_gotoXY(int row, int column);
-int mt_getScreenSize(int *rows, int *columns);
-int mt_setFgColor(Color color);
-int mt_setBgColor(Color color);
+int clearScreen ();
+int gotoXY(int row, int column);
+int getScreenSize(int *rows, int *columns);
+int setFgColor(Color color);
+int setBgColor(Color color);
 
 #endif

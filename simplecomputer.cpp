@@ -10,14 +10,10 @@ void printExtendedCharset();
 
 int main()
 {
-    mt_clrscr();
-    int command;
-    int operand;
-    int value;
-    commandEncode(10, 11, &value);
-    cout << value;
-    commandDecode(value, &command, &operand);
-    cout << endl << command << " " << operand;
+    clearScreen();
+    //Box(3, 3, 12, 12);
+    printBigChar(BIGPLUS, 1, 1);
+    printBigChar(BIGMINUS, 1, 10);
     return 0;
 }
 
@@ -28,6 +24,6 @@ void printExtendedCharset()
     {
         *a = i;
         printf("\n%s =", a);
-        bc_printA(a);
+        printA(a);
     }
 }
