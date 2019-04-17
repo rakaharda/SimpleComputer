@@ -10,7 +10,8 @@ int clearScreen ()
 
 int gotoXY(int column, int row)
 {
-    cout << "\E[" << row << ';' << column << 'H';
+    printf("\E[%d;%dH", row, column);
+    //cout << "\E[" << row << ';' << column << 'H';
     return 1;
 }
 
