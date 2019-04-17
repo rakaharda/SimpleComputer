@@ -6,6 +6,8 @@
 #include <fstream>
 #include <bitset>
 #include <string>
+#include <vector>
+#include <iostream>
 
 #define MEMSIZE 100
 #define FLAG_REG_SIZE 5
@@ -18,7 +20,7 @@
 
 int memoryInit();
 int memorySet(int address, int value);
-int memoryGet(int address, int *value);
+int memoryGet(int address, int &value);
 int memorySave(std::string filename);
 int memoryLoad(std::string filename);
 int regInit();
@@ -26,5 +28,5 @@ int regSet(int reg, int value);
 int regGet(int reg, int *value);
 int commandEncode(int command, int operand, int *value);
 int commandDecode(int value, int *command, int *operand);
-
+void printMemory();
 #endif

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int memory[MEMSIZE];
+vector<int> memory(MEMSIZE);
 bitset<5> flagRegister;
 
 using namespace std;
@@ -22,11 +22,11 @@ int memorySet(int address, int value)
     return 1;
 }
 
-int memoryGet(int address, int *value)
+int memoryGet(int address, int &value)
 {
     if(address >= MEMSIZE)
         return 0;
-    *value = memory[address];
+    value = memory[address];
     return 1;
 }
 
@@ -101,4 +101,12 @@ int commandDecode(int value, int *command, int *operand)
     *command = (int)commandBit.to_ulong();
     *operand = (int)operandBit.to_ulong();
     return 1;
+}
+
+void printMemory()
+{
+    cout << hex;
+    for(auto& i : memory)
+        cout << i << ' ';
+    cout << dec;
 }

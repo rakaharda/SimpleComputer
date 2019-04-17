@@ -10,27 +10,27 @@ int Box(unsigned int x1, unsigned int y1, unsigned int x2, unsigned int y2)
 {
     if(x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0)
         return 0;
-    gotoXY(y1, x1);
+    gotoXY(x1, y1);
     printA(ULCORNER);
-    gotoXY(y2, x1);
-    printA(URCORNER);
-    gotoXY(y1, x2);
+    gotoXY(x1, y2);
     printA(DLCORNER);
-    gotoXY(y2, x2);
+    gotoXY(x2, y1);
+    printA(URCORNER);
+    gotoXY(x2, y2);
     printA(DRCORNER);
     for(unsigned i = x1 + 1; i < x2; i++)
     {
-        gotoXY(y1, i);
-        printA(HBORDER);
-        gotoXY(y2, i);
-        printA(HBORDER);
+        gotoXY(i, y1);
+        printA(VBORDER);
+        gotoXY(i, y2);
+        printA(VBORDER);
     }
     for(unsigned i = y1 + 1; i < y2; i++)
     {
-        gotoXY(i, x1);
-        printA(VBORDER);
-        gotoXY(i, x2);
-        printA(VBORDER);
+        gotoXY(x1, i);
+        printA(HBORDER);
+        gotoXY(x2, i);
+        printA(HBORDER);
     }
     return 1;
 }
