@@ -5,3 +5,7 @@ memdump
 .vscode/settings.json
 .vscode/ipch/ce35284a0efde638/scmemory.ipch
 .vscode/ipch/252973a7eef12ee6/simplecomputer.ipch
+*.json
+*.bin
+*.ipch
+simplecomputer

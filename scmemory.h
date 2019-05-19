@@ -14,19 +14,25 @@
 #define MEMORY_OVERFLOW 1
 #define DIVIDED_BY_ZERO 2
 #define OUT_OF_RANGE 3
-#define CLOCK_ERROR 4
+#define FLAG_INTERRUPT 4
 #define UNKNOWN_COMMAND 5
 #define COMMAND_LENGTH 15
 
 int memoryInit();
 int memorySet(int address, int value);
 int memoryGet(int address, int &value);
+int memoryGet(int address);
 int memorySave(std::string filename);
 int memoryLoad(std::string filename);
 int regInit();
 int regSet(int reg, int value);
-int regGet(int reg, int *value);
-int commandEncode(int command, int operand, int *value);
-int commandDecode(int value, int *command, int *operand);
+int regGet(int reg, int &value);
+int regGet(int reg);
+int commandEncode(int command, int operand, int &value);
+int commandDecode(int value, int &command, int &operand);
+int getIC();
+int getAcc();
+int setIC(int value);
+int setAcc(int value);
 void printMemory();
 #endif

@@ -4,6 +4,8 @@ using namespace std;
 
 vector<int> memory(MEMSIZE);
 bitset<5> flagRegister;
+int instructionCounter = 0;
+int accumulator = 0;
 
 using namespace std;
 
@@ -30,6 +32,13 @@ int memoryGet(int address, int &value)
     return 1;
 }
 
+int memoryGet(int address)
+{
+   if(address >= MEMSIZE)
+        return 0;
+    return memory[address];
+}
+
 int memorySave(string filename)
 {
 	ofstream file(filename, ios::binary);
@@ -51,6 +60,7 @@ int memoryLoad(string filename)
 int regInit()
 {
     flagRegister = 0;
+    flagRegister[FLAG_INTERRUPT] = 1;
     return 1;
 }
 
@@ -62,15 +72,23 @@ int regSet(int reg, int value)
     return 1;
 }
 
-int regGet(int reg, int *value)
+int regGet(int reg, int &value)
 {
     if(reg >= FLAG_REG_SIZE)
         return 0;
-    *value = flagRegister[reg];
+    value = flagRegister[reg];
     return 1;
 }
 
-int commandEncode(int command, int operand, int *value)
+int regGet(int reg)
+{
+    if(reg >= FLAG_REG_SIZE)
+        return 0;
+    return flagRegister[reg];
+}
+
+
+int commandEncode(int command, int operand, int &value)
 {
     if(operand > 127 || command > 127)
         return 0;
@@ -82,11 +100,11 @@ int commandEncode(int command, int operand, int *value)
         temp[i] = operandBit[i];
         temp[i + 7] = commandBit[i];
     }
-    *value = (int)(temp.to_ulong());
+    value = (int)(temp.to_ulong());
     return 1;
 }
 
-int commandDecode(int value, int *command, int *operand)
+int commandDecode(int value, int &command, int &operand)
 {
     bitset<15> valueBit(value);
     if(valueBit[14])
@@ -98,9 +116,32 @@ int commandDecode(int value, int *command, int *operand)
         commandBit[i] = valueBit[i + 7];
         operandBit[i] = valueBit[i];
     }
-    *command = (int)commandBit.to_ulong();
-    *operand = (int)operandBit.to_ulong();
+    command = (int)commandBit.to_ulong();
+    operand = (int)operandBit.to_ulong();
     return 1;
+}
+
+int getIC()
+{
+    return instructionCounter;
+}
+
+int getAcc()
+{
+    return accumulator;
+}
+
+int setIC(int value)
+{
+    if(value < 0 || value > MEMSIZE - 1)
+        return 0;
+    instructionCounter = value;
+    return 1;
+}
+
+int setAcc(int value)
+{
+    accumulator = value;
 }
 
 void printMemory()
