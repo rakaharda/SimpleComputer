@@ -32,12 +32,12 @@ int getScreenSize(int *rows, int *columns)
 
 int setFgColor(Color color)
 {
-    cout << "\E[" << (int)color - 10 <<'m';
+    printf("\E[%dm", (int)color - 10);
     return 1;
 }
 
 int setBgColor(Color color)
 {
-    cout << "\E[" << (int)color << 'm';
+    printf("\E[%dm", (int)color);
     return 1;
 }

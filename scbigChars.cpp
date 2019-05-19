@@ -40,15 +40,15 @@ int printBigChar(long big, unsigned x, unsigned y, Color fgColor, Color bgColor)
     bitset<64> b(big);
     for(int i = 0; i < 64; i++)
         {
-            setBgColor(bgColor);
-            setFgColor(fgColor);
+            //setBgColor(bgColor);
+            //setFgColor(fgColor);
             gotoXY(i % 8 + x, i / 8 + y);
             if(b[63 - i] == 0)
                 printA(" ");
             else
                 printA("a");
-            setBgColor(Color::DEFAULT);
-            setFgColor(Color::DEFAULT);
+            //setBgColor(Color::DEFAULT);
+            //setFgColor(Color::DEFAULT);
         }
     return 1;
 }
