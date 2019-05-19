@@ -7,6 +7,7 @@ void printScreen()
     Box(47, 13, 71, 22);
     Box(62, 1, 80, 3);
     Box(62, 4, 80, 6);
+    Box(62, 7, 80, 9);
     gotoXY(52, 13);
     cout << " Keys ";
     gotoXY(48, 14);
@@ -29,8 +30,12 @@ void printScreen()
     cout << ((getAcc() > -1) ? '+' : '-') << setw(4) << setfill('0') << getAcc();
     gotoXY(70, 4);
     cout << "IC";
-    gotoXY(68, 5);
+    gotoXY(69, 5);
     cout << setw(4) << setfill('0') << getIC();
+    gotoXY(69, 7);
+    cout << "Flags";
+    gotoXY(69, 8);
+    cout << regGet(0) << regGet(1) << regGet(2) << regGet(3) << regGet(4);
     gotoXY(26, 1);
     cout << " Memory ";
     gotoXY(1, 1);

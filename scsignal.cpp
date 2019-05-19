@@ -2,16 +2,23 @@
 
 void timer(int sig)
 {
-    printScreen();
-    int temp = getIC();
-    (temp < MEMSIZE - 1) ? setIC(temp + 1) : setIC(0);
-    alarm(1);
+    if(!regGet(FLAG_INTERRUPT))
+    {
+        printScreen();
+        CU();
+        alarm(1);
+    }
+    else
+    {
+        alarm(0);
+        printScreen();
+    }
+    
 }
 
 void userTimer(int sig)
 {
     alarm(0);
-    regInit();
     regSet(FLAG_INTERRUPT, 1);
-    setIC(0);
+    CU();
 }

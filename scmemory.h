@@ -11,11 +11,11 @@
 
 #define MEMSIZE 100
 #define FLAG_REG_SIZE 5
-#define MEMORY_OVERFLOW 1
-#define DIVIDED_BY_ZERO 2
-#define OUT_OF_RANGE 3
-#define FLAG_INTERRUPT 4
-#define UNKNOWN_COMMAND 5
+#define MEMORY_OVERFLOW 0
+#define DIVIDED_BY_ZERO 1
+#define OUT_OF_RANGE 2
+#define FLAG_INTERRUPT 3
+#define UNKNOWN_COMMAND 4
 #define COMMAND_LENGTH 15
 
 int memoryInit();
@@ -31,6 +31,7 @@ int regGet(int reg);
 int commandEncode(int command, int operand, int &value);
 int commandDecode(int value, int &command, int &operand);
 int getIC();
+int increaseIC();
 int getAcc();
 int setIC(int value);
 int setAcc(int value);

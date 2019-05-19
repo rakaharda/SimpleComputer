@@ -144,6 +144,14 @@ int setAcc(int value)
     accumulator = value;
 }
 
+int increaseIC()
+{
+    if(instructionCounter >= MEMSIZE - 1)
+        return 0;
+    instructionCounter++;
+    return 1;
+}
+
 void printMemory()
 {
     cout << hex;
