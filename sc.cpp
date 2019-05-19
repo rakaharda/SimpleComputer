@@ -14,6 +14,7 @@ void scInit()
 
 void handleEvents()
 {
+    string path;
     Keys key;
     readKey(&key);
     if (regGet(FLAG_INTERRUPT))
@@ -35,10 +36,18 @@ void handleEvents()
             setAcc(memoryGet(getIC()));
             break;
         case KEY_l:
-            memoryLoad("memdump");
+            gotoXY(1, 23);
+            cout << ">                                    ";
+            gotoXY(3, 23);
+            cin >> path;
+            memoryLoad(path);
             break;
         case KEY_s:
-            memorySave("memdump");
+            gotoXY(1, 23);
+            cout << ">                                    ";
+            gotoXY(3, 23);
+            cin >> path;
+            memorySave(path);
             break;
         case KEY_enter:
             getInput();
@@ -70,12 +79,12 @@ void handleEvents()
 void getInput()
 {
     gotoXY(1, 23);
-    cout << "> ";
+    cout << ">                                    ";
+    gotoXY(3, 23);
     int temp;
     cin >> temp;
     memorySet(getIC(), temp);
 }
-
 
 void printExtendedCharset()
 {
@@ -87,4 +96,3 @@ void printExtendedCharset()
         printA(a);
     }
 }
-

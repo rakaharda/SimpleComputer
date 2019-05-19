@@ -9,18 +9,33 @@ int CU()
         regSet(UNKNOWN_COMMAND, 1);
         return -1;
     }
+    if (operand < 0 || operand > MEMSIZE - 1)
+    {
+        regSet(FLAG_INTERRUPT, 1);
+        regSet(OUT_OF_RANGE, 1);
+        return -1;
+    }
     switch (command)
     {
     case 0x10: //READ
         gotoXY(1, 23);
-        cout << "> ";
-        int temp;
+        cout << ">                                    ";
+        gotoXY(3, 23);
+        long temp;
         cin >> temp;
+        if (temp != (int)temp)
+        {
+            regSet(FLAG_INTERRUPT, 1);
+            regSet(MEMORY_OVERFLOW, 1);
+            return -1;
+        }
         memorySet(operand, temp);
         increaseIC();
         break;
     case 0x11: //WRITE
         gotoXY(1, 24);
+        cout << "<                                    ";
+        gotoXY(3, 24);
         cout << memoryGet(operand);
         increaseIC();
         break;
@@ -71,19 +86,19 @@ int ALU(int command, int operand)
 {
     switch (command)
     {
-    case 0x30:  //ADD
+    case 0x30: //ADD
         setAcc(getAcc() + memoryGet(operand));
         break;
-    case 0x31:  //SUB
+    case 0x31: //SUB
         setAcc(getAcc() - memoryGet(operand));
         break;
-    case 0x32:  //DIVIDE
+    case 0x32: //DIVIDE
         setAcc(getAcc() / memoryGet(operand));
         break;
-    case 0x33:  //MUL
+    case 0x33: //MUL
         setAcc(getAcc() * memoryGet(operand));
         break;
-    case 0x66:  //SUBC 
+    case 0x66: //SUBC
         setAcc(memoryGet(operand) - getAcc());
         break;
     }

@@ -8,6 +8,7 @@ void printScreen()
     Box(62, 1, 80, 3);
     Box(62, 4, 80, 6);
     Box(62, 7, 80, 9);
+    Box(62, 10, 80, 12);
     gotoXY(52, 13);
     cout << " Keys ";
     gotoXY(48, 14);
@@ -36,6 +37,14 @@ void printScreen()
     cout << "Flags";
     gotoXY(69, 8);
     cout << regGet(0) << regGet(1) << regGet(2) << regGet(3) << regGet(4);
+    gotoXY(67, 10);
+    cout << "Operation";
+    gotoXY(69, 11);
+    int command, operand;
+    if(commandDecode(memoryGet(getIC()), command, operand))
+        cout << hex << command << ':' << dec << operand;
+    else
+        cout << "None";
     gotoXY(26, 1);
     cout << " Memory ";
     gotoXY(1, 1);
